@@ -308,7 +308,7 @@ class world
 			foreach ($habitat->deaths as $key => $value)
 			{
 				$percent = round($value / $total_deaths * 100, 4);
-				log::record($percent . '% ' . $cause[$key] . ' - ' . $value, 3, "\n", 'output');
+				log::record($percent . '% ' . $cause[$key], 3, "\n", 'output');
 			}
 
 			$habitat->reset();
