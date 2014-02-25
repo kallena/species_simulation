@@ -54,6 +54,15 @@ class log
       }
   }
 
+  /*
+  |--------------------------------------------------------------------------
+  | write()
+  |--------------------------------------------------------------------------
+  |
+  |  Right log to its respective file
+  |
+  */
+
   static function write($key = 'log')
   {
     if(isset($_SESSION[$key]))
@@ -62,6 +71,34 @@ class log
       unset($_SESSION[$key]);
     }
   }
+
+  /*
+  |--------------------------------------------------------------------------
+  | clear()
+  |--------------------------------------------------------------------------
+  |
+  |  Generate a new log file and clear the associated log variable.
+  |
+  */
+
+  static function clear($key = 'log')
+  {
+    file_put_contents($key . '.txt', null);
+    
+    if(isset($_SESSION[$key]))
+    {
+      unset($_SESSION[$key]);
+    }
+  }
+
+  /*
+  |--------------------------------------------------------------------------
+  | add_tabs()
+  |--------------------------------------------------------------------------
+  |
+  |  Used to add indentation to a log entry.
+  |
+  */
 
   static function add_tabs($input, $count)
   {   
@@ -74,15 +111,5 @@ class log
       }
       
       return $input;
-  }
-
-  static function clear($key = 'log')
-  {
-    file_put_contents($key . '.txt', null);
-    
-    if(isset($_SESSION[$key]))
-    {
-      unset($_SESSION[$key]);
-    }
   }
 }
