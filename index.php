@@ -37,12 +37,4 @@ require_once 'classes/class.creature.php';
 
 $world = new world('config/config.txt');
 
-$time_start = microtime(true); 
 $world->simulate();
-$time_end = microtime(true);
-
-//dividing with 60 will give the execution time in minutes other wise seconds
-$execution_time = ($time_end - $time_start)/60;
-
-//execution time of the script
-echo '<b>Total Execution Time:</b> '. ($execution_time * 60).' Seconds';
