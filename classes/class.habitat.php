@@ -26,10 +26,10 @@ class habitat
 {
 	public $name						= 'New York City';
 	public $monthly_food				= null;
-    public $monthly_water 				= null;
-    public $average_temperature			= array('summer' => null, 'spring' => null, 'fall' => null, 'winter' => null);
+	public $monthly_water 				= null;
+	public $average_temperature			= array('summer' => null, 'spring' => null, 'fall' => null, 'winter' => null);
 
-    public $creatures 					= array(); // an array where all of the current species living the habitat are stored.
+	public $creatures 					= array(); // an array where all of the current species living the habitat are stored.
 	public $creature_count				= 0;
 	public $current_males				= 0;
 
