@@ -24,7 +24,6 @@ THE SOFTWARE.
 
 class species
 {
-
   public $name;
   public $monthly_food_consumption;
   public $monthly_water_consumption;
