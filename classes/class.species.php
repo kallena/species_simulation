@@ -26,14 +26,14 @@ class species
 {
 
   public $name;
-  public $monthly_food_consumption 	= 3;
-  public $monthly_water_consumption = 4;
-  public $life_span 				        = 200;
-  public $minimum_breeding_age 		  = 5;
-  public $maximum_breeding_age 		  = 10;
-  public $gestation_period 		      = 9;
-  public $minimum_temperature 		  = 0;
-  public $maximum_temperature 		  = 95;
+  public $monthly_food_consumption;
+  public $monthly_water_consumption;
+  public $life_span;
+  public $minimum_breeding_age;
+  public $maximum_breeding_age;
+  public $gestation_period;
+  public $minimum_temperature;
+  public $maximum_temperature;
 
   function spawn($gender = null)
   {
