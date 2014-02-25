@@ -248,6 +248,9 @@ class world
 
 	function simulate()
 	{	
+		log::clear();
+		log::clear('output');
+
 		foreach($this->species as $species)
 		{
 			$this->current_species = $species;
@@ -263,10 +266,9 @@ class world
 			$this->generate_report($species);
 		}
 
-		echo('The simulation is complete.<br />Please <a href="output.txt?random='. time() . '" target="_blank">click here</a> to view the output file.<br />Please <a href="log.txt?random='. time() . '" target="_blank">click here</a> to view a complete log file.<br />');
+		echo('The simulation is complete. It ran for ' . $this->iterations . ' iteration(s) at ' . $this->years . ' year(s) per iteration.<br />Please <a href="output.txt?random='. time() . '" target="_blank">click here</a> to view the output file.<br />Please <a href="log.txt?random='. time() . '" target="_blank">click here</a> to view a complete log file.<br />');
 		
 		// Summarize and then write the output.txt file
-		log::record('Simulation ran for ' . $this->iterations . ' iteration(s) at ' . $this->years . ' year(s) per iteration', 0, "\n", 'output');
 		log::write('output');
 
 		// Write the log.txt file.

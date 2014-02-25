@@ -42,11 +42,25 @@ class log
       if(isset($_SESSION[$key]))
       {
         $_SESSION[$key] .= self::add_tabs($report, $tabs);
+        
+        if(strlen($_SESSION[$key]) > 8388608)
+        {
+          self::write($key);
+        }
       }
       else
       {
         $_SESSION[$key] = self::add_tabs($report, $tabs);
       }
+  }
+
+  static function write($key = 'log')
+  {
+    if(isset($_SESSION[$key]))
+    {
+      file_put_contents($key . '.txt', $_SESSION[$key], FILE_APPEND);
+      unset($_SESSION[$key]);
+    }
   }
 
   static function add_tabs($input, $count)
@@ -62,10 +76,13 @@ class log
       return $input;
   }
 
-  static function write($key = 'log')
+  static function clear($key = 'log')
   {
-    file_put_contents($key . '.txt', $_SESSION[$key]);
-
-    unset($_SESSION[$key]);
+    file_put_contents($key . '.txt', null);
+    
+    if(isset($_SESSION[$key]))
+    {
+      unset($_SESSION[$key]);
+    }
   }
 }

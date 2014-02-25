@@ -21,6 +21,36 @@ species:
       gestation_period: 12
       minimum_temperature: 0
       maximum_temperature: 95
+  - name: bear1
+    attributes:
+      monthly_food_consumption: 4
+      monthly_water_consumption: 4
+      life_span: 50
+      minimum_breeding_age: 10
+      maximum_breeding_age: 35
+      gestation_period: 12
+      minimum_temperature: 0
+      maximum_temperature: 95
+  - name: bear2
+    attributes:
+      monthly_food_consumption: 4
+      monthly_water_consumption: 4
+      life_span: 50
+      minimum_breeding_age: 10
+      maximum_breeding_age: 35
+      gestation_period: 12
+      minimum_temperature: 0
+      maximum_temperature: 95
+  - name: bear3
+    attributes:
+      monthly_food_consumption: 4
+      monthly_water_consumption: 4
+      life_span: 50
+      minimum_breeding_age: 10
+      maximum_breeding_age: 35
+      gestation_period: 12
+      minimum_temperature: 0
+      maximum_temperature: 95
 habitats:
     - name: plains
       monthly_food: 100 #arbitrary unit
