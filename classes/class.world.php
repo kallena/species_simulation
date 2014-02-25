@@ -24,8 +24,8 @@ THE SOFTWARE.
 
 class world
 {
-	public $years 				= 100;
-	public $iterations 			= 4;
+	public $years;
+	public $iterations;
 
 	public $current_year 		= 1;
 	public $current_month 		= 1;
