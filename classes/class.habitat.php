@@ -31,6 +31,7 @@ class habitat
 
     public $creatures 					= array(); // an array where all of the current species living the habitat are stored.
 	public $creature_count				= 0;
+	public $current_males				= 0;
 
 	public $current_food 				= null;
 	public $current_water 				= null;
@@ -96,6 +97,7 @@ class habitat
 
 		$this->current_creature_count = 2;
 		$this->total_births += 2;
+		$this->current_males = 1;
 
 		$this->food_stress_coefficient  = $species->monthly_food_consumption;
 		$this->water_stress_coefficient = $species->monthly_water_consumption;
@@ -188,7 +190,12 @@ class habitat
 			{
 				$this->current_creature_count--;	// ... reduce the current species count by 1
 				$this->deaths[$creature->dead]++;	// ... record the cause death
-				$this->total_deaths++;
+				$this->total_deaths++;				// ... increment the total_deaths count by 1
+
+				if($creature->gender == MALE)		// ... if the creature that died was a male
+		        {
+		          $this->current_males--;		// ... reduce the habitat's current_male count.
+		        }
 
 				unset($this->creatures[$key]);		// ... remove the species from the habitat's species array.
 			}
@@ -202,7 +209,7 @@ class habitat
 
 		$this->population += $this->current_creature_count;
 
-		log::record('END OF MONTH STATS >> Current Species Count: ' .  $this->current_creature_count . ' - Max Count: ' . $this->max_creature_count . ' - Total Births: ' . $this->total_births . ' - Total Deaths: ' . $this->total_deaths, 3);
+		log::record('END OF MONTH STATS >> Current Species Count: ' .  $this->current_creature_count . ' - Current Males: ' . $this->current_males . ' - Max Count: ' . $this->max_creature_count . ' - Total Births: ' . $this->total_births . ' - Total Deaths: ' . $this->total_deaths, 3);
 
 		// It's the end of the month, and time for the habitat to refresh its resources.
 		$this->refresh_resources();

@@ -77,9 +77,20 @@ class creature extends species
       //Give Birth
       if($this->pregnant == $this->gestation_period)  // If the species is pregnant and it's gestation is now complete...
       {
-        $habitat->creatures[] = $this->give_birth();  // ... then give birth, and assign the new instance to $baby
-        $habitat->current_creature_count++;           // ... and increment the habitat's current species count by 1.
+        $offspring = $this->give_birth();       // ... then give birth, 
+        $habitat->creatures[] = $offspring;     // ... assign the new instance to $baby
+        
+        // increment the habitat's relevant counters.
+        $habitat->current_creature_count++; 
         $habitat->total_births++;
+
+        if($offspring->gender == MALE)
+        {
+          $habitat->current_males++;
+        }
+
+        // unset $child 
+        unset($offspring);
       }
 
       // Drink
@@ -101,7 +112,10 @@ class creature extends species
       }
 
       // Breed
-      $this->breed($habitat->stressed);
+      if($habitat->current_males > 0)
+      {
+        $this->breed($habitat->stressed);
+      }
 
       // Age
       $this->age();
