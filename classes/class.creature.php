@@ -77,7 +77,6 @@ class creature extends species
       //Give Birth
       if($this->pregnant == $this->gestation_period)  // If the species is pregnant and it's gestation is now complete...
       {
-        
         $habitat->creatures[] = $this->give_birth();  // ... then give birth, and assign the new instance to $baby
         $habitat->current_creature_count++;           // ... and increment the habitat's current species count by 1.
         $habitat->total_births++;
@@ -226,6 +225,7 @@ class creature extends species
   {
     $this->dead = $reason; // Toggle dead to true so that the species can be removed from the habitat's species array
     
+    // log the death
     $cause = array(HEAT => 'HEAT', COLD => 'COLD', THIRST => 'THIRST', STARVATION => 'STARVATION', OLD_AGE => 'OLD_AGE');
     log::record('1 ' . $this->name . ' died of ' . $cause[$reason] . ' at ' . $this->get_age_in_years() . ' years of age.', 3);
   }

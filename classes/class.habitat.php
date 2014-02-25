@@ -67,10 +67,10 @@ class habitat
 		// Set $this->resources_stressed
 		$this->stressed = ($water_demand > $this->monthly_water OR $food_demand > $this->monthly_food);
 
-		// if($this->stressed)
-		// {
-		// 	log::record('Food and/or water resources are currently stressed!', 3);
-		// }
+		if($this->stressed)
+		{
+			log::record('Food and/or water resources are currently stressed!', 3);
+		}
 	}
 
 	/*
