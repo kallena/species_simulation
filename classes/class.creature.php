@@ -72,13 +72,13 @@ class creature extends species
   |
   */
 
-  function live(&$habitat) // Handles all of the monthly activities required for the species to live it's life.
+  function live($habitat) // Handles all of the monthly activities required for the species to live it's life.
   {
       //Give Birth
       if($this->pregnant == $this->gestation_period)  // If the species is pregnant and it's gestation is now complete...
       {
         $offspring = $this->give_birth();       // ... then give birth, 
-        $habitat->creatures[] = $offspring;     // ... assign the new instance to $baby
+        $habitat->creatures[] = $offspring;     // ... assign the new instance to $offspring
         
         // increment the habitat's relevant counters.
         $habitat->current_creature_count++; 
@@ -89,7 +89,7 @@ class creature extends species
           $habitat->current_males++;
         }
 
-        // unset $child 
+        // unset $offspring 
         unset($offspring);
       }
 
